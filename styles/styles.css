@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    src: url(/fonts/forebearer.TTF);
+}
+body {
+    background-image: url(/images/middle-earth-shadow-of-mordor-background.jpg);
+    background-attachment: fixed;
+    margin: 0;
+}
+h1 {
+    margin: 0;
+}
+div {
+    border: 2px solid rgb(248, 253, 250);
+    border-radius: 5px;
+}
+div:hover {
+    border: 3px solid rgb(73, 75, 74)
+}
+#page {
+    display: block;
+    background-color: rgba(245, 245, 245, 0.5);
+    width: 50%;
+    margin: 0 auto;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #0000007c; 
+}
+::-webkit-scrollbar-thumb {
+    background: rgb(73, 75, 74); 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
