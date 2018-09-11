@@ -1,5 +1,4 @@
 @font-face {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     src: url(/fonts/forebearer.TTF);
 }
 body {
@@ -13,6 +12,7 @@ h1 {
 div {
     border: 2px solid rgb(248, 253, 250);
     border-radius: 5px;
+    padding: 5px;
 }
 div:hover {
     border: 3px solid rgb(73, 75, 74)
@@ -22,6 +22,7 @@ div:hover {
     background-color: rgba(245, 245, 245, 0.5);
     width: 50%;
     margin: 0 auto;
+    font-family: 'forebearer'
 }
 .center {
     display: block;
