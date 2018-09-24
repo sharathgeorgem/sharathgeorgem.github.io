@@ -89,6 +89,7 @@ function editText () {
   var id = item.parentNode.id
   var buttons = this.parentNode
   var editInput = item.querySelector('input')
+  var commentInput = item.querySelector('textArea')
   if (editInput.style.display === 'none') {
     editInput.style.display = 'block'
     editInput.value = item.innerText
@@ -103,9 +104,52 @@ function editText () {
       }
       item.innerText = editInput.value
       item.appendChild(editInput)
+      item.appendChild(commentInput)
       item.appendChild(buttons)
     }
     editInput.style.display = 'none'
+  }
+  dataObjectUpdated()
+}
+// Comment text
+function commentText () {
+  var item = this.parentNode.parentNode
+  var id = item.parentNode.id
+  var buttons = this.parentNode
+  var editInput = item.querySelector('input')
+  var commentInput = item.querySelector('textArea')
+  if (commentInput.style.display === 'none') {
+    commentInput.style.display = 'block'
+    if (id === 'todo') {
+      let flip = data.todo.find(o => o.taskName === item.innerText)
+      if (commentInput.value) {
+        flip.commentText = commentInput.value
+      }
+    } else {
+      let flip = data.completed.find(o => o.taskName === item.innerText)
+      if (commentInput.value) {
+        flip.commentText = commentInput.value
+      }
+    }
+    item.appendChild(editInput)
+    item.appendChild(commentInput)
+    item.appendChild(buttons)
+  } else {
+    if (id === 'todo') {
+      let flip = data.todo.find(o => o.taskName === item.innerText)
+      if (commentInput.value) {
+        flip.commentText = commentInput.value
+      }
+    } else {
+      let flip = data.completed.find(o => o.taskName === item.innerText)
+      if (commentInput.value) {
+        flip.commentText = commentInput.value
+      }
+    }
+    item.appendChild(editInput)
+    item.appendChild(commentInput)
+    item.appendChild(buttons)
+    commentInput.style.display = 'none'
   }
   dataObjectUpdated()
 }
@@ -126,6 +170,12 @@ function addItemToDOM (obj, completed) {
   var editArea = document.createElement('input')
   editArea.setAttribute('type', 'text')
   editArea.classList.add('editArea')
+  var commentArea = document.createElement('textarea')
+  commentArea.setAttribute('placeholder', 'Comments.')
+  commentArea.classList.add('textArea')
+  if (obj.commentText) {
+    commentArea.innerText = obj.commentText
+  }
   var buttons = document.createElement('div')
   buttons.classList.add('buttons')
   var remove = document.createElement('button')
@@ -144,10 +194,16 @@ function addItemToDOM (obj, completed) {
   var edit = document.createElement('button')
   edit.classList.add('edit')
   edit.addEventListener('click', editText)
+  // Add click event for adding comment
+  var comment = document.createElement('button')
+  comment.classList.add('comment')
+  comment.addEventListener('click', commentText)
 
   item.appendChild(editArea)
+  item.appendChild(commentArea)
   buttons.appendChild(remove)
   buttons.appendChild(edit)
+  buttons.appendChild(comment)
   buttons.appendChild(voice)
   buttons.appendChild(complete)
 
